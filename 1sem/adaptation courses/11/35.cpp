@@ -3,15 +3,20 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#define MAX_STRING 5000
 
 using namespace std;
 
 string get_short_name(const string &full_name) {
-    char s[MAX_STRING], n[MAX_STRING], f[MAX_STRING], out[MAX_STRING];
-    sscanf(full_name.c_str(), "%s %s %s", s, n, f);
-    sprintf(out, "%s %c.%c.", s, n[0], f[0]);
-    return string(out);
+    string out[3];
+    int i = 0;
+    for (char c : full_name) {
+        if (c == ' ') {
+            i++;
+            continue;
+        }
+        out[i] += c;
+    }
+    return out[0] + " " + out[1][0] + "." + out[2][0] + ".";
 }
 
 void read_string(istream &reader, string &where, char delimiter) {
@@ -31,6 +36,7 @@ int main() {
     while (!inf.eof()) {
         string s;
         read_string(inf, s, '\n');
+        if (s.size() < 2) continue;
         cout << get_short_name(s) << endl;
     }
     return 0;

@@ -4,6 +4,7 @@
 #include <fstream>
 #include <vector>
 #include <cmath>
+#include <limits>
 
 using namespace std;
 
@@ -30,9 +31,9 @@ int main() {
         return 1;
     }
     vector<float> v = read_vec(inf);
-    size_t index = -1;
-    float smallest = 1e38f;
-    for (size_t i = 0; i < v.size(); i++) {
+    size_t index = 0;
+    float smallest = v[index];
+    for (size_t i = 1; i < v.size(); i++) {
         if (nearest_int_dist(v[i]) < smallest) {
             smallest = nearest_int_dist(v[i]);
             index = i;
