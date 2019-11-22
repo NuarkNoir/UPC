@@ -4,7 +4,6 @@
 
 using namespace std;
 
-int **read_matrix(size_t rows, size_t cols);
 void print_matrix(int **matrix, size_t rows, size_t cols);
 int **make2d(size_t nrows, size_t ncols, int val);
 
