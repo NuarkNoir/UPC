@@ -45,8 +45,6 @@ void print_matrix(int **matrix, size_t nrows, size_t ncols) {
 void transpose(int **matrix, size_t size) {
     for(size_t i = 0; i < size; i++) {
         for(size_t j = i; j < size; j++)  {
-            int ri = *(*(matrix + i) + j);
-            int ci = *(*(matrix + j) + i);
             swap(*(*(matrix + i) + j), *(*(matrix + j) + i));
         }
     }
