@@ -17,7 +17,7 @@ msg = gen_msg(ralph, 100);
 dlmwrite("msg.txt", msg, '');
 
 #stage 7
-[b, n] = calc_info(msg, alph, ralph);
+[b, n] = calc_info(msg, alph, ralph)
 
 #stage 8
 avg_b = b / length(msg);

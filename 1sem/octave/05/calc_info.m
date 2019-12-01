@@ -8,15 +8,11 @@ function [b,n] = calc_info(msg, alph, alph_p)
   
   b = 0;
   for i = 1:l_msg
-    flag = false;
-    for j = 1:l_alph
-      if msg(i) == alph(j)
-        flag = true;
-        b -= log(alph_p(j));
-        break
-      endif
-    endfor
-    if ~flag 
+    mask = alph == msg(i);
+    if any(mask)
+      comp = alph_p(mask);
+      b -= log2(comp);
+    else
       warning("[WARN] Symbol '%s' (at pos. %d from msg) not found in alphabet", msg(i), i)
     endif
   endfor
