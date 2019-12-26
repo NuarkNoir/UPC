@@ -3,16 +3,16 @@ V=33;
 rand("state", V);
 
 #stage 7
-alph = char([48:57 65:70]);
-save -ascii "hex.txt" alph;
+alph = char(['0':'9' 'A':'F']);
+r = rand(1, 16);
+ralph = r./sum(r);
+save -ascii "hex.txt" ralph;
 
 #stage 8
 code = arrayfun(@(n)dec2bin(n, 4), 0:15, "UniformOutput", false);
 dlmwrite('code.txt', char(code), '');
 
 #stage 9
-r = rand(1, 16);
-ralph = r./sum(r);
 for i = 1:100
   msg = gen_msg(ralph, 10);
   encoded = encode_msg(msg, code);
@@ -22,10 +22,10 @@ for i = 1:100
   end
 end
 
+m_len = alph_entropy(ralph);
 a_len = avg_len(code, ralph);
-min_avg_len = min_bits(length(alph));
-min_len = min(arrayfun(@length, code));
-rel_opt = alph_entropy(ralph)/(log2(length(ralph)) * a_len);
-results = [a_len, min_avg_len, min_len, rel_opt];
+rel_opt = m_len/a_len;
+
+results = [a_len, m_len, min_bits(length(ralph)), rel_opt];
 
 save -ascii "results.txt" results;
