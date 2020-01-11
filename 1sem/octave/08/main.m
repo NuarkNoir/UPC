@@ -1,3 +1,5 @@
+pkg load communications;
+
 #stage 6
 V=33;
 rand("state", V);
@@ -9,7 +11,7 @@ ralph = r./sum(r);
 save -ascii "hex.txt" ralph;
 
 #stage 8
-code = arrayfun(@(n)dec2bin(n, 4), 0:15, "UniformOutput", false);
+code = cellfun(@(c)char('0' + c), huffmandict(alph, ralph), 'UniformOutput', false);
 dlmwrite('code.txt', char(code), '');
 
 #stage 9
