@@ -1,4 +1,4 @@
-// pb_15_100_v5.cpp
+// pb_15_100.cpp
 // Горбацевич Андрей
 #include <iostream>
 #include <fstream>
