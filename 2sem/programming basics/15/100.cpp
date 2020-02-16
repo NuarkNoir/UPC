@@ -5,6 +5,10 @@
 
 using namespace std;
 
+int readBinInt(istream &ist);
+
+void writeBinInt(int num, ostream &ost);
+
 void text2bin(istream &ist, ostream &ost);
 
 void my_task(istream &ist);
@@ -31,49 +35,62 @@ int main() {
     return 0;
 }
 
+int readBinInt(istream &ist) {
+    int x = 0;
+    ist.read(reinterpret_cast<char*>(&x), sizeof(int));
+    return x;
+}
+
+void writeBinInt(int num, ostream &ost) {
+    ost.write(reinterpret_cast<char*>(&num), sizeof(int));
+}
+
 void text2bin(istream &ist, ostream &ost) {
     int N, M;
     ist >> N >> M;
-    ost << char(N) << char(M);
+    writeBinInt(N, ost);
+    writeBinInt(M, ost);
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
             int cv;
             ist >> cv;
-            ost << char(cv);
+            writeBinInt(cv, ost);
         }
     }
 }
 
 void my_task(istream &ist) {
-    ist.seekg(0, ios::beg);
     int k;
     cout << "k >>>";
     cin >> k;
-    int N = int(ist.get()),
-            M = int(ist.get());
+    int N = readBinInt(ist),
+        M = readBinInt(ist);
+    if (k-1 > M) {
+        return;
+    }
     int **mtx = new int*[N];
     for (int i = 0; i < N; i++) {
         int *row = new int[M]();
         for (int j = 0; j < M; j++) {
-            *(row + j) = int(ist.get());
+            *(row + j) = readBinInt(ist);
         }
         *(mtx + i) = row;
     }
-    for (int i = 0; i < N; i++) {
-        for (int j = 1; j < M; j++) {
-            if (mtx[i][j-1] < mtx[i][j]) {
-                bool flag = false;
-                for (int v = 0; v < M; v++) {
-                    if (mtx[i][v] == k) {
-                        flag = true;
-                        break;
-                    }
-                }
-                if (flag) {
-                    cout << "Line " << i + 1 << " contains k(k==" << k << ")\n";
+    bool flag = false;
+    for (int j = 1; j < M; j++) {
+        if (mtx[k-1][j-1] > mtx[k-1][j]) {
+            for (int v = 0; v < M; v++) {
+                if (mtx[k-1][v] == k) {
+                    flag = true;
                     break;
                 }
             }
         }
+        if (flag) {
+            break;
+        }
+    }
+    if (flag) {
+        cout << "Line " << k << " contains k(k==" << k << ")\n";
     }
 }
