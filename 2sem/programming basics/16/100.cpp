@@ -2,7 +2,6 @@
 // Горбацевич Андрей
 #include <iostream>
 #include <fstream>
-#include <cstring>
 #include <vector>
 #include <algorithm>
 
@@ -111,4 +110,3 @@ vector<DB_record> parseDB(ifstream &ifs) {
     }
     return out;
 }
-
