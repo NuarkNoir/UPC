@@ -2,7 +2,6 @@
 // Горбацевич Андрей
 #include <iostream>
 #include <fstream>
-#include <vector>
 #include <ctime>
 
 using namespace std;
@@ -15,7 +14,6 @@ struct Node {
 
     ~Node() {
         delete sibling;
-        cout << "destructor for Node{" << data << "}\n";
     }
 };
 
@@ -25,7 +23,6 @@ struct SinglyLinkedList {
 
     ~SinglyLinkedList() {
         delete first;
-        cout << "destructor for List[" << len << "]\n";
     }
 };
 
@@ -112,11 +109,19 @@ int main() {
         int i = 0;
         while (prev_ptr != nullptr) {
             if (!(prev_ptr->data % to_string(prev_ptr->data).length())) {
+                auto prevsib = prev_ptr->sibling;
                 for (int _i = 0; _i < 5; _i++) {
                     int num = rand() % 100;
-                    auto node = new Node(num);
-                    insert_to_list_at(list, i++, node);
+                    if (num > prev_ptr->data) {
+                        num = prev_ptr->data + (rand() % 3);
+                    }
+
+                    prev_ptr->sibling = new Node(num);
+                    prev_ptr->sibling->sibling = prevsib;
+                    prev_ptr = prev_ptr->sibling;
+                    prevsib = prev_ptr->sibling;
                 }
+                i += 6;
             }
             else {
                 i++;
