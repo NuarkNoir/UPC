@@ -8,6 +8,8 @@
 #include <cassert>
 #include <algorithm>
 
+#undef IS_BIN_REQUIRED
+
 
 inline void time_passed(std::chrono::system_clock::time_point start, double &holder) {
     auto stop = std::chrono::high_resolution_clock::now();
@@ -115,7 +117,11 @@ void algo_02(const num_list &cont, const num_type &num, num_type &found) {  // O
             break;
         }
 
+#ifdef IS_BIN_REQUIRED
+        c = (l + r) / 2;
+#else
         c = l + ((num - lv) * (r - l)) / (rv - lv);
+#endif
         if (cont[c] < num) {
             l = c + 1;
         }
