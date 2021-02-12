@@ -14,4 +14,16 @@
         <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
         <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.0" />
     </ItemGroup>
+    <ItemGroup>
+      <AvaloniaXaml Remove="PlayfairTests\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <Compile Remove="PlayfairTests\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <EmbeddedResource Remove="PlayfairTests\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Remove="PlayfairTests\**" />
+    </ItemGroup>
 </Project>

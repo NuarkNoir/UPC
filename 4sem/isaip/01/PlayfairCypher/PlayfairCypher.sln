@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayfairCypher", "PlayfairCypher.csproj", "{5AAEBCD9-0ADD-4C76-B1B4-92569D82970B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayfairTests", "PlayfairTests\PlayfairTests.csproj", "{68778671-2559-4828-9A21-13B6B67F2A9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{5AAEBCD9-0ADD-4C76-B1B4-92569D82970B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5AAEBCD9-0ADD-4C76-B1B4-92569D82970B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5AAEBCD9-0ADD-4C76-B1B4-92569D82970B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68778671-2559-4828-9A21-13B6B67F2A9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68778671-2559-4828-9A21-13B6B67F2A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68778671-2559-4828-9A21-13B6B67F2A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68778671-2559-4828-9A21-13B6B67F2A9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
