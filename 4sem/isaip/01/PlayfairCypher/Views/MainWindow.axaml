@@ -1,0 +1,33 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PlayfairCypher.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        Width="700" Height="300"
+        x:Class="PlayfairCypher.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="PlayfairCypher">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <Grid RowDefinitions="Auto,20,*" Margin="20">
+        <Grid Grid.Row="0" ColumnDefinitions="*,40,Auto,Auto,Auto">
+            <TextBox Grid.Column="0" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" Watermark="Keyword" NewLine=""
+                     Text="{Binding Keyword}"/>
+            <CheckBox Grid.Column="2" Content="Encrypting" IsChecked="{Binding IsEncrypting}" />
+            <Button Grid.Column="4" Content="Clear form" Command="{Binding ClearForm}" />
+        </Grid>
+        <Grid Grid.Row="2" ColumnDefinitions="*,Auto,*">
+            <TextBox Grid.Column="0" AcceptsReturn="True" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                     Watermark="INPUT" UseFloatingWatermark="True" TextWrapping="Wrap"
+                     Text="{Binding InputText}"/>
+            <GridSplitter Grid.Column="1" />
+            <TextBox Grid.Column="2" ScrollViewer.VerticalScrollBarVisibility="Auto" IsReadOnly="True"
+                     Watermark="OUTPUT" UseFloatingWatermark="True" TextWrapping="Wrap"
+                     Text="{Binding OutputText}"/>
+        </Grid>
+    </Grid>
+</Window>
