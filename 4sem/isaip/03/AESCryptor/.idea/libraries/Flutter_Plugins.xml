@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../fluttersdk/flutter/.pub-cache/git/flutter-desktop-embedding-f2d8aa3820fb87316516670bf4d51a74de8ac0dd/plugins/window_size" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
